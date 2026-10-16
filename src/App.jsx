@@ -1,31 +1,149 @@
-
+import { useState } from "react";
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   return (
-    <div className="min-h-screen bg-dark text-white">
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        isDark
+          ? "bg-dark text-white"
+          : "light-theme bg-[#F3F0F8] text-[#241C30]"
+      }`}
+    >
       
       {/* Navigation */}
-      <nav className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-5 sm:px-6 md:px-8">
+      <nav
+        className={`sticky top-0 z-50 flex items-center justify-between
+          border-b px-4 py-4 sm:px-6 md:px-8
+          backdrop-blur-xl transition-colors duration-300
+          ${
+            isDark
+              ? "border-white/10 bg-[#0B0B0F]/75"
+              : "border-[#D8CDE3]/70 bg-[#F3F0F8]/75"
+          }`}
+      >
+      
+
+
+        {/* Logo */}
         <a href="#home" className="shrink-0 text-xl font-bold sm:text-2xl">
-          Sandesh<span className="text-accent">.</span>
+          Sandesh Gawali<span className="text-accent">.</span>
         </a>
 
-        <div className="flex min-w-0 flex-1 justify-center overflow-x-auto">
-          <div className="flex w-max items-center gap-4 whitespace-nowrap px-2 text-sm text-gray-300 md:gap-6 md:text-base">
-            <a href="#home" className="hover:text-accent">Home</a>
-            <a href="#about" className="hover:text-accent">About</a>
-            <a href="#projects" className="hover:text-accent">Projects</a>
-            <a href="#skills" className="hover:text-accent">Skills</a>
-            <a href="#achievements" className="hover:text-accent">Achievements</a>
-            <a href="#contact" className="hover:text-accent">Contact</a>
-          </div>
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-6 text-gray-300 md:flex">
+          <a href="#home" className="hover:text-accent">Home</a>
+          <a href="#about" className="hover:text-accent">About</a>
+          <a href="#projects" className="hover:text-accent">Projects</a>
+          <a href="#skills" className="hover:text-accent">Skills</a>
+          <a href="#achievements" className="hover:text-accent">Achievements</a>
+          <a href="#contact" className="hover:text-accent">Contact</a>
         </div>
 
-        <a
-          href="#contact"
-          className="shrink-0 rounded-lg border border-accent px-3 py-2 text-sm text-accent transition hover:bg-accent hover:text-white sm:px-5"
-        >
-          Hire Me
-        </a>
+        {/* Actions */}
+        <div className="flex items-center gap-2">
+          
+          {/* Theme Toggle */}
+          <button
+            type="button"
+            onClick={() => setIsDark(!isDark)}
+            aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+            title={isDark ? "Switch to light theme" : "Switch to dark theme"}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-gray-400 transition hover:border-accent hover:text-accent"
+          >
+            {isDark ? (
+              // Sun icon
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.42 1.42" />
+                <path d="m17.65 17.65 1.42 1.42" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.35 17.65-1.42 1.42" />
+                <path d="m19.07 4.93-1.42 1.42" />
+              </svg>
+            ) : (
+              // Moon icon
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
+              </svg>
+            )}
+          </button>
+
+          {/* Burger Button - Mobile */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            className="rounded-lg border border-white/20 p-2 text-xl transition hover:border-accent hover:text-accent md:hidden"
+          >
+            {isMenuOpen ? "✕" : "☰"}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <div
+            className={`absolute left-0 right-0 top-full z-50 flex flex-col gap-1
+              border-b p-4 shadow-xl backdrop-blur-xl md:hidden
+              ${
+                isDark
+                  ? "border-white/10 bg-[#0B0B0F]/95"
+                  : "border-[#D8CDE3]/70 bg-[#F3F0F8]/95"
+              }`}
+          >
+            {[
+              ["Home", "#home"],
+              ["About", "#about"],
+              ["Projects", "#projects"],
+              ["Skills", "#skills"],
+              ["Achievements", "#achievements"],
+              ["Contact", "#contact"],
+            ].map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                onClick={() => setIsMenuOpen(false)}
+                className="rounded-lg px-4 py-3 text-gray-300 transition hover:bg-white/5 hover:text-accent"
+              >
+                {label}
+              </a>
+            ))}
+
+            <a
+              href="#contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-2 rounded-lg bg-accent px-4 py-3 text-center font-semibold text-white"
+            >
+              Hire Me
+            </a>
+          </div>
+        )}
       </nav>
 
 

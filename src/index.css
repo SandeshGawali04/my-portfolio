@@ -13,3 +13,47 @@ body {
   color: #F5F5F5;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Comfortable light theme */
+.light-theme {
+  background-color: #F3F0F8;
+  color: #241C30;
+}
+
+/* Readable secondary text */
+.light-theme .text-gray-300 {
+  color: #44384F;
+}
+
+.light-theme .text-gray-400 {
+  color: #5B5067;
+}
+
+.light-theme .text-gray-500 {
+  color: #71677B;
+}
+
+/* Soft borders */
+.light-theme .border-white\/10 {
+  border-color: #E3DCEB;
+}
+
+.light-theme .border-white\/20 {
+  border-color: #D8CDE3;
+}
+
+/* Cards: soft lavender instead of pure white */
+.light-theme .bg-white\/5 {
+  background-color: #FAF8FC;
+}
+
+.light-theme .bg-white\/10 {
+  background-color: #EBE4F3;
+}
+
+/* Mobile dropdown */
+.light-theme .bg-dark {
+  background-color: #F3F0F8;
+}
+
