@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import Reveal from "./Reveal";
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
@@ -148,8 +150,11 @@ function App() {
 
 
       {/* Hero Section */}
-      <section
+      <motion.section
         id="home"
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="flex min-h-[80vh] flex-col items-center justify-center px-6 text-center"
       >
 
@@ -191,10 +196,17 @@ function App() {
             Contact Me
           </a>
         </div>
-      </section>
+      </motion.section>
       
       {/* About Section */}
-      <section id="about" className="px-6 py-24">
+      <motion.section 
+        id="about"
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="px-6 py-24"
+      >
         <div className="mx-auto max-w-5xl">
           <p className="mb-3 text-center font-semibold uppercase tracking-widest text-accent">
             Get to know me
@@ -274,11 +286,18 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       
       {/* Projects Section */}
-      <section id="projects" className="px-6 py-24">
+      <motion.section 
+        id="projects" 
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.7 }}
+        className="px-6 py-24"
+      >
         <div className="mx-auto max-w-6xl">
           <p className="mb-3 text-center font-semibold uppercase tracking-widest text-accent">
             What I've built
@@ -295,7 +314,18 @@ function App() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Project 1 */}
-            <article className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-purple-500/50">
+            
+            <motion.article
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-purple-500/50"
+            >
+
+
+
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-2xl">
                 🤖
               </div>
@@ -324,10 +354,17 @@ function App() {
               >
                 View on GitHub ↗
               </a>
-            </article>
+            </motion.article>
 
             {/* Project 2 */}
-            <article className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-purple-500/50">
+            <motion.article
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-purple-500/50"
+            >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-2xl">
                 ⚙️
               </div>
@@ -356,10 +393,17 @@ function App() {
               >
                 View on GitHub ↗
               </a>
-            </article>
+            </motion.article>
 
             {/* Project 3 */}
-            <article className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-purple-500/50">
+            <motion.article
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-purple-500/50"
+            >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-2xl">
                 🧬
               </div>
@@ -383,14 +427,21 @@ function App() {
               <span className="text-sm text-gray-500">
                 Academic project
               </span>
-            </article>
+            </motion.article>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       
       {/* Skills Section */}
-      <section id="skills" className="px-6 py-24">
+      <motion.section 
+        id="skills" 
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.7 }}
+        className="px-6 py-24"
+      >
         <div className="mx-auto max-w-5xl">
           <p className="mb-3 text-center font-semibold uppercase tracking-widest text-accent">
             My technical toolkit
@@ -491,11 +542,18 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       
       {/* Achievements Section */}
-      <section id="achievements" className="px-6 py-24">
+      <motion.section 
+        id="achievements" 
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.7 }}
+        className="px-6 py-24"
+      >
         <div className="mx-auto max-w-5xl">
           <p className="mb-3 text-center font-semibold uppercase tracking-widest text-accent">
             My journey so far
@@ -583,11 +641,18 @@ function App() {
             </article>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       
       {/* Contact Section */}
-      <section id="contact" className="px-6 py-24">
+      <motion.section 
+        id="contact" 
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7 }}
+        className="px-6 py-24"
+      >
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-3 font-semibold uppercase tracking-widest text-accent">
             Get in touch
@@ -630,7 +695,7 @@ function App() {
             </a>
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Footer */}
       <footer className="border-t border-white/10 px-6 py-6 text-center">
